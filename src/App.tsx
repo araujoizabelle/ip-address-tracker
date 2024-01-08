@@ -18,6 +18,12 @@ interface location {
   timezone:string
 }
 
+/**
+ * TODO: 
+ * 1- create custom Hook to fetch the data on load page using some default ip
+ * 2- css 
+ */
+
 const apiKey = process.env.apikey;
 
 function App() {
