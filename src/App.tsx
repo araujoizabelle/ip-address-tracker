@@ -1,11 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-} from 'react-leaflet'
+import { Map } from './components/map/Map';
+import { CardInformations } from './components/cardInformations/CardInformations';
 
 interface location {
   city: string, 
@@ -53,41 +49,20 @@ function App() {
       </div>
 
       {locationData && 
-        <div className='container-info'>
-          <div className='container-info--item'>
-            <span className='info-item--title'>Ip Address</span>
-            <p>{locationData.ip}</p>
-          </div>
-          <div className='container-info--item'>
-            <span className='info-item--title'>Location</span>
-            <p>
-            {locationData?.city}, {locationData?.region} - {locationData?.postalCode}
-            </p>
-          </div>
-          <div className='container-info--item'>
-            <span className='info-item--title'>Timezone</span>
-            <p>UTC {locationData?.timezone}</p>
-          </div>
-          <div className='container-info--item'>
-            <span className='info-item--title'>ISP</span>
-            <p>{locationData?.isp}</p>
-          </div>
-        </div>
+        <CardInformations 
+          ip={locationData.ip} 
+          postalCode={locationData.postalCode}
+          city={locationData.city} 
+          timezone={locationData.timezone}
+          region={locationData.region}
+          country={locationData.country}
+          isp={locationData.isp}
+        />
       }
 
       {locationData && 
         <div className='container-map'>
-          <MapContainer center={[locationData.lat, locationData.lng]} zoom={13} scrollWheelZoom={false}>
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={[locationData.lat, locationData.lng]}>
-              <Popup>
-                Double click to zoom in
-              </Popup>
-            </Marker>
-          </MapContainer>
+          <Map lat={locationData.lat} lng={locationData.lng}/>
         </div>
       }
     </div>  
