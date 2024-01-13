@@ -5,6 +5,7 @@ import { CardInformations } from '../cardInformations/CardInformations';
 import { useFetchLocation } from '../../hooks/useFetchLocation';
 import { useLocationContext } from '../../context/LocationContext';
 import { ToastContainer, toast } from 'react-toastify';
+
 /**
  * TODO: 
  * 1- Marker automatically change on search
@@ -36,11 +37,16 @@ export const Page = () => {
         <button onClick={handleSearch}> <img src='src/assets/images/icon-arrow.svg'/> </button>
       </div>
     
-      {loading && <div> LOADING </div>}
+      {loading && 
+        <div className="skeleton-container">
+          <div className="skeleton-item search"></div>
+          <div className="skeleton-item map"></div>
+        </div>
+    }
 
       {error &&  <ToastContainer position="bottom-right" theme="colored" />}
 
-      {data && data.lat && data.lng &&
+      {!loading && data && data.lat && data.lng &&
         <CardInformations 
           ip={data.ip} 
           postalCode={data.postalCode}
@@ -52,7 +58,7 @@ export const Page = () => {
         />
       }
 
-      {data && data.lat && data.lng && 
+      {!loading && data && data.lat && data.lng && 
         <div className='container-map'>
           <Map lat={data.lat} lng={data.lng}/>
         </div>

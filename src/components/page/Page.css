@@ -49,10 +49,50 @@
   
   .container-map {
     width: 100%;
-    height: 100%;
+    height: 500px;
   }
   
   .container-map > .leaflet-container {
     height: 100%;
   }
   
+  .skeleton-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .skeleton-item {
+    height: 20px;
+    width: 100%;
+    background-color: #ccc;
+    margin-bottom: 10px;
+    animation: loadingAnimation 1.5s infinite;
+  }
+
+  .search {
+    min-width: 60%;
+    max-width: 80%;
+    height: 150px;
+    border-radius: 30px;
+    display: flex;
+    align-self: center;
+    position: absolute;
+    top: 34%;
+    z-index: 9999;
+  }
+
+  .map {
+    height: 500px;
+  }
+  
+  @keyframes loadingAnimation {
+    0% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
