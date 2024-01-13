@@ -4,11 +4,11 @@ import { Map } from '../map/Map';
 import { CardInformations } from '../cardInformations/CardInformations';
 import { useFetchLocation } from '../../hooks/useFetchLocation';
 import { useLocationContext } from '../../context/LocationContext';
+import { ToastContainer, toast } from 'react-toastify';
 /**
  * TODO: 
  * 1- Marker automatically change on search
  * 2- skeleton screen to load the content
- * 3- error treatment
  * 4- reorganize components, hooks and interfaces   
  */
 
@@ -16,13 +16,15 @@ import { useLocationContext } from '../../context/LocationContext';
 export const Page = () => {
     const {data, setData} = useLocationContext();
     const [searchValue, setSearchValue] = useState('');
-    const {request, loading} = useFetchLocation(setData, searchValue);
+    const {request, error, loading} = useFetchLocation(setData, searchValue);
 
   const handleSearch = async () => {
     try {
         await request()
-    } catch (e) {
+    } catch (e: any) {
         console.error("error on request func", e)
+        toast.error(`Error: ${e.message}`)
+
     }
   }
 
@@ -35,6 +37,8 @@ export const Page = () => {
       </div>
     
       {loading && <div> LOADING </div>}
+
+      {error &&  <ToastContainer position="bottom-right" theme="colored" />}
 
       {data && data.lat && data.lng &&
         <CardInformations 
