@@ -9,42 +9,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    
-  }
-  
-  .container-search {
-    height: 65%;
-    background-image: url("../../assets/images/pattern-bg-desktop.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding-top: 40px;
-    /* display: flex; */
-    /* justify-items: baseline; */
-    /* align-items: center; */
-    /* justify-content: center; */
-  }
-  
-  .container-search input {
-    width: 30%;
-    height: 49.47px;
-    text-align: left; 
-    padding-left: 20px;
-    border-radius: 15px 0px 0px 15px;
-  }
-  
-  .container-search button {
-    height: 52px;
-    background-color: #373e47;
-    border-radius: 0px;
-    color: white;
-    border-radius: 0px 15px 15px 0px;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #464e58;
+    flex-direction: column;  
   }
   
   .container-map {
@@ -56,43 +21,3 @@
     height: 100%;
   }
   
-  .skeleton-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .skeleton-item {
-    height: 20px;
-    width: 100%;
-    background-color: #ccc;
-    margin-bottom: 10px;
-    animation: loadingAnimation 1.5s infinite;
-  }
-
-  .search {
-    min-width: 60%;
-    max-width: 80%;
-    height: 150px;
-    border-radius: 30px;
-    display: flex;
-    align-self: center;
-    position: absolute;
-    top: 34%;
-    z-index: 9999;
-  }
-
-  .map {
-    height: 500px;
-  }
-  
-  @keyframes loadingAnimation {
-    0% {
-      opacity: 0.5;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0.5;
-    }
-  }

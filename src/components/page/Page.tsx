@@ -5,10 +5,11 @@ import { CardInformations } from '../cardInformations/CardInformations';
 import { useFetchLocation } from '../../hooks/useFetchLocation';
 import { useLocationContext } from '../../context/LocationContext';
 import { ToastContainer, toast } from 'react-toastify';
+import { Skeleton } from '../skeleton/Skeleton';
+import { InputSearch } from '../inputSearch/InputSearch';
 
 /**
  * TODO: 
- * 1- make api agnostic
  * 2- reorganize components, hooks and interfaces   
  * 3- do the tests
  */
@@ -39,18 +40,10 @@ export const Page = () => {
 
   return (
     <div className='container'>
-      <div className='container-search'>
-        <h1 className='title'>IP Address Tracker</h1>
-        <input type='text' placeholder='Search for any IP address or domain' value={searchValue} onChange={(e) => {setSearchValue(e.target.value)}}/>
-        <button onClick={handleSearch}> <img src='src/assets/images/icon-arrow.svg'/> </button>
-      </div>
+      
+      <InputSearch onSearch={handleSearch}/>
     
-      {loading && 
-        <div className="skeleton-container">
-          <div className="skeleton-item search"></div>
-          <div className="skeleton-item map"></div>
-        </div>
-    }
+      {loading && <Skeleton/>}
 
       {error &&  <ToastContainer position="bottom-right" theme="colored" />}
 
