@@ -1,15 +1,9 @@
 import React, { useContext } from "react";
-import { ReactNode, createContext, useState } from "react";
-import { LocationData } from "../interface";
+import { createContext, useState } from "react";
+import { LocationData } from "../interfaces/LocationDataInterface";
+import { LocationContextProps } from "../interfaces/LocationContextProps";
+import { LocationContextValue } from "../interfaces/LocationContextValue";
 
-interface LocationContextProps{
-    children: ReactNode;
-}
-
-interface LocationContextValue {
-    data: LocationData;
-    setData: React.Dispatch<React.SetStateAction<LocationData>>
-}
 
 const LocationContext = createContext<LocationContextValue | undefined>(undefined);
 

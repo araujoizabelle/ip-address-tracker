@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LocationData } from "../interface";
+import { LocationData } from "../interfaces/LocationDataInterface";
 
 
 const apiKey = process.env.apikey;

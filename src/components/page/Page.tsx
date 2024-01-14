@@ -19,7 +19,14 @@ export const Page = () => {
     const [searchValue, setSearchValue] = useState('');
     const {request, error, loading} = useFetchLocation(setData, searchValue);
 
-    const {city, country_code2,latitude,longitude,zipcode, time_zone, isp, ip} = data;
+    const {
+      city, 
+      country_code2,
+      latitude,
+      longitude,
+      zipcode, 
+      time_zone, 
+      isp, ip} = data;
 
   const handleSearch = async () => {
     try {
@@ -27,7 +34,6 @@ export const Page = () => {
     } catch (e: any) {
         console.error("error on request func", e)
         toast.error(`Error: ${e.message}`)
-
     }
   }
 

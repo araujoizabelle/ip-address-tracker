@@ -1,5 +1,5 @@
 import "./CardInformations.css"
-import { LocationData } from "../../interface"
+import { LocationData } from "../../interfaces/LocationDataInterface"
 
 export const CardInformations: React.FC<LocationData> = ({ip, city, zipcode, country_code2, time_zone, isp}) => {
 
