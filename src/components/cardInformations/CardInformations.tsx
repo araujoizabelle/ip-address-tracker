@@ -1,15 +1,7 @@
 import "./CardInformations.css"
-interface locationData {
-    city: string, 
-    country: string,
-    postalCode:string,
-    region:string,
-    timezone:string,
-    isp: string,
-    ip: string,
-}
+import { LocationData } from "../../interface"
 
-export const CardInformations: React.FC<locationData> = ({ip, city, region, postalCode, timezone, isp}) => {
+export const CardInformations: React.FC<LocationData> = ({ip, city, zipcode, country_code2, time_zone, isp}) => {
 
     return (
         <div className='container-info'>
@@ -20,12 +12,12 @@ export const CardInformations: React.FC<locationData> = ({ip, city, region, post
           <div className='container-info--item'>
             <span className='info-item--title'>Location</span>
             <p>
-            {city}, {region} - {postalCode}
+            {city}, {country_code2} - {zipcode}
             </p>
           </div>
           <div className='container-info--item'>
             <span className='info-item--title'>Timezone</span>
-            <p>UTC {timezone}</p>
+            <p>UTC {String(time_zone.offset).replace(/^(-?\d)$/, '$1:00')}</p>
           </div>
           <div className='container-info--item'>
             <span className='info-item--title'>ISP</span>

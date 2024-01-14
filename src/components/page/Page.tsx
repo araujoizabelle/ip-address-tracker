@@ -8,9 +8,9 @@ import { ToastContainer, toast } from 'react-toastify';
 
 /**
  * TODO: 
- * 1- Marker automatically change on search
- * 2- skeleton screen to load the content
- * 4- reorganize components, hooks and interfaces   
+ * 1- make api agnostic
+ * 2- reorganize components, hooks and interfaces   
+ * 3- do the tests
  */
 
 
@@ -18,6 +18,8 @@ export const Page = () => {
     const {data, setData} = useLocationContext();
     const [searchValue, setSearchValue] = useState('');
     const {request, error, loading} = useFetchLocation(setData, searchValue);
+
+    const {city, country_code2,latitude,longitude,zipcode, time_zone, isp, ip} = data;
 
   const handleSearch = async () => {
     try {
@@ -46,21 +48,22 @@ export const Page = () => {
 
       {error &&  <ToastContainer position="bottom-right" theme="colored" />}
 
-      {!loading && data && data.lat && data.lng &&
+      {!loading && latitude && longitude &&
         <CardInformations 
-          ip={data.ip} 
-          postalCode={data.postalCode}
-          city={data.city} 
-          timezone={data.timezone}
-          region={data.region}
-          country={data.country}
-          isp={data.isp}
+          ip={ip} 
+          zipcode={zipcode}
+          city={city} 
+          time_zone={time_zone}
+          country_code2={country_code2}
+          isp={isp}
+          latitude={latitude}
+          longitude={longitude}
         />
       }
 
-      {!loading && data && data.lat && data.lng && 
+      {!loading && latitude && longitude &&
         <div className='container-map'>
-          <Map lat={data.lat} lng={data.lng}/>
+          <Map lat={Number(latitude)} lng={Number(longitude)}/>
         </div>
       }
     </div>

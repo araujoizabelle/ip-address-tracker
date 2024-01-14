@@ -1,42 +1,32 @@
 import React, { useContext } from "react";
 import { ReactNode, createContext, useState } from "react";
-
-interface Location {
-    city: string, 
-    country: string,
-    geonameId: number,
-    lat: number,
-    lng:number,
-    postalCode:string,
-    region:string,
-    timezone:string,
-    isp: string,
-    ip: string, 
-  }
-
+import { LocationData } from "../interface";
 
 interface LocationContextProps{
     children: ReactNode;
 }
 
 interface LocationContextValue {
-    data: Location;
-    setData: React.Dispatch<React.SetStateAction<Location>>
+    data: LocationData;
+    setData: React.Dispatch<React.SetStateAction<LocationData>>
 }
 
 const LocationContext = createContext<LocationContextValue | undefined>(undefined);
 
 const LocationStorage: React.FC<LocationContextProps> =  ({ children })=> {
-    const [data, setData] = useState<Location>({city: "Nova Friburgo", 
-    country: "Brasil",
-    geonameId: 223,
-    lat: -22.28194,
-    lng: -42.53111,
-    postalCode:"28600-000",
-    region:"Sudeste",
-    timezone:"-05:00",
-    isp: "SPACE X, FRIONLINE",
-    ip: "192.223.174.002", });
+    const [data, setData] = useState<LocationData>({
+            ip: "23.110.166.209",
+            country_code2: "US",
+            city: "Los Angeles",
+            zipcode: "90012-2904",
+            latitude: "34.05855",
+            longitude: "-118.23671",
+            isp: "LeaseWeb USA, Inc. Los Angeles",
+            time_zone: {
+                offset: -8
+            }
+        }
+    );
     return (
         <LocationContext.Provider value={{ data, setData }}>
             {children}
