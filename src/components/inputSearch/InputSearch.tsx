@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './InputSearch.css'
 
 
-export const InputSearch = ({ onSearch }) => {
+export const InputSearch: React.FC<any>= ({ onSearch }) => {
     const [value, setValue] = useState('');
 
   return (

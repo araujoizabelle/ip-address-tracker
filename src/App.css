@@ -1,17 +1,22 @@
-#root, input, button {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
-  border-radius: 0px;
-  outline: none;
-}
-
-*:focus{
-  outline: none !important;
-  box-shadow: none;
-}
-
+.title {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 24px;
+  }
+  
+  
+  .container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;  
+  }
+  
+  .container-map {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .container-map > .leaflet-container {
+    height: 100%;
+  }

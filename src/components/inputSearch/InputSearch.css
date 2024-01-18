@@ -25,6 +25,7 @@
     background-color: #373e47;
     border-radius: 0px;
     color: white;
+    width: 50px;
     border-radius: 0px 15px 15px 0px;
     transition: background-color 0.3s ease;
   }
