@@ -19,7 +19,6 @@ import 'react-toastify/dist/ReactToastify.css';
 export const App = () => {
     const {data, setData} = useLocationContext();
     const {request, error, loading} = useFetchLocation(setData);
-    console.log('error', error)
     const {
       city, 
       country_code2,
@@ -30,7 +29,6 @@ export const App = () => {
       isp, ip} = data;
 
   const handleSearch = async () => {
-    console.log("handleSearch")
     try {
         await request()
     } catch (e: any) {
