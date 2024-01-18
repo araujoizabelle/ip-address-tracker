@@ -12,14 +12,14 @@ export const useFetchLocation = (setData: React.Dispatch<React.SetStateAction<Lo
     const request = async (options?: any) => {
         try {
             setLoading(true);
-            const dados = await fetch(url, options);
+            const response = await fetch(url, options);
             
-            if (dados.status !== 200) {
+            if (response.status !== 200) {
                 setError(true);
-                throw new Error('Unauthorized');
+                throw new Error('Something went wrong');
             }
 
-            const data = await dados.json();
+            const data = await response.json();
             if (data.latitude && data.longitude) {
                 setData(data); 
             }
